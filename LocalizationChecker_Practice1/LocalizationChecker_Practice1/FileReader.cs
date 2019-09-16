@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace LocalizationChecker_Practice1
 {
@@ -12,8 +13,7 @@ namespace LocalizationChecker_Practice1
         public File ReadXMLFile(string fileName)
         {
             // read from XML file
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(fileName);
+            XDocument xmlDocument = XDocument.Load(fileName, LoadOptions.SetLineInfo);
 
             File file = new File()
             {
@@ -21,23 +21,26 @@ namespace LocalizationChecker_Practice1
             };
 
             // put it in collection using list
-            foreach (XmlNode firstnode in xmlDocument.ChildNodes)
+            foreach (XElement firstnode in xmlDocument.Nodes())
             {
                 if (firstnode.Name == "sitecore")
                 {
-                    foreach (XmlNode childNode in firstnode.ChildNodes)
+                    foreach (XElement childNode in firstnode.Nodes())
                     {
                         if (childNode.Name == "phrase")
                         {
-                            var key = childNode.Attributes["key"]?.Value;
-                            var itemId = childNode.Attributes["itemid"]?.Value;
-                            var path = childNode.Attributes["path"]?.Value;
-                            var fieldName = childNode.Attributes["fieldName"]?.Value;
-                            var template = childNode.Attributes["template"]?.Value;
-                            var translatedValue = childNode.ChildNodes.Count == 0 ? null : childNode.ChildNodes[0].InnerText;
+                            var lineNumber = ((IXmlLineInfo)childNode).LineNumber;
+                            var attributes = childNode.Attributes().ToDictionary(x => x.Name, y => y);
+                            var key = attributes.GetValueOrDefault("key")?.Value;
+                            var itemId = attributes.GetValueOrDefault("itemid")?.Value;
+                            var path = attributes.GetValueOrDefault("path")?.Value;
+                            var fieldName = attributes.GetValueOrDefault("fieldName")?.Value;
+                            var template = attributes.GetValueOrDefault("template")?.Value;
+                            var translatedValue = childNode.HasElements ? ((XElement)childNode.Nodes().First()).Value : null;
 
                             Phrase phrase = new Phrase()
                             {
+                                LineNumber = lineNumber,
                                 Key = key,
                                 ItemId = itemId,
                                 Path = path,

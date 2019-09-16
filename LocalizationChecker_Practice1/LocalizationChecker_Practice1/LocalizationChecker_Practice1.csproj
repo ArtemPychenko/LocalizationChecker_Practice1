@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Checker.cs" />
+    <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="File.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="ParentResult.cs" />

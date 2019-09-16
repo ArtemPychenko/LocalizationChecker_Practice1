@@ -36,7 +36,7 @@ namespace LocalizationChecker_Practice1
                 int untranslatedPhraseIndex = 0;
                 foreach (var untranslatedPhrase in language.UntranslatedPhrases)
                 {
-                    Console.WriteLine($"  [{untranslatedPhraseIndex}] Value={untranslatedPhrase.TranslatedValue} Key={untranslatedPhrase.Key}");
+                    Console.WriteLine($"  [{untranslatedPhraseIndex}] Line={untranslatedPhrase.LineNumber} Value={untranslatedPhrase.TranslatedValue} Key={untranslatedPhrase.Key}");
                     untranslatedPhraseIndex++;
                 }
 

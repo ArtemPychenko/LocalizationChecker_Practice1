@@ -91,6 +91,7 @@ namespace LocalizationChecker_UnitTests
             languageResult.ShouldNotBeNull();
             languageResult.FileName.ShouldBe(@"TestFiles\NoPhrases.xml");
             languageResult.MissingPhrases.Count().ShouldBe(1);
+            languageResult.MissingPhrases.First().TranslatedValue.ShouldBe("Test1");
             languageResult.UntranslatedPhrases.ShouldBeEmpty();
             languageResult.TotalPhraseCount.ShouldBe(0);
             languageResult.FilteredPhraseCount.ShouldBe(0);
@@ -146,6 +147,7 @@ namespace LocalizationChecker_UnitTests
             languageResult.FileName.ShouldBe(@"TestFiles\SinglePhrase.xml");
             languageResult.MissingPhrases.Count().ShouldBe(1);
             languageResult.UntranslatedPhrases.Count().ShouldBe(1);
+            languageResult.UntranslatedPhrases.First().TranslatedValue.ShouldBe("Test1");
             languageResult.TotalPhraseCount.ShouldBe(1);
             languageResult.FilteredPhraseCount.ShouldBe(1);
         }
