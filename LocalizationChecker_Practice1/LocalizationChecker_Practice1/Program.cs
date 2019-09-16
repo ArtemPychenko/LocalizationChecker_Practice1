@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,33 +24,19 @@ namespace LocalizationChecker_Practice1
             Checker checker = new Checker();
             var result = checker.Check(EnglishFile, new File[] { DenmarkFile }, selectedPath);
 
-            //// Display result
-            foreach (var language in result.LanguageResults)
+            TextReportGenerator reportGenerator = new TextReportGenerator();
+            var report = reportGenerator.Generate(result);
+
+            using (StreamReader streamReader = new StreamReader(report))
             {
-                Console.WriteLine("---------------------------------------------------------------");
-                Console.WriteLine("The file name is: " + language.FileName);
-                Console.WriteLine("Total phrases: " + language.TotalPhraseCount);
-                Console.WriteLine("Total filtered phrases: " + language.FilteredPhraseCount);
+                var reportContent = streamReader.ReadToEnd();
+                Console.WriteLine(reportContent);
 
-                Console.WriteLine();
-                Console.WriteLine("Untranslated phrases: " + language.UntranslatedPhrases.Count());
-                int untranslatedPhraseIndex = 0;
-                foreach (var untranslatedPhrase in language.UntranslatedPhrases)
-                {
-                    Console.WriteLine($"  [{untranslatedPhraseIndex}] Line={untranslatedPhrase.LineNumber} Value={untranslatedPhrase.TranslatedValue} Key={untranslatedPhrase.Key}");
-                    untranslatedPhraseIndex++;
-                }
-
-                Console.WriteLine();
-                Console.WriteLine("Missing phrases: " + language.MissingPhrases.Count());
-                foreach (var missingPhrase in language.MissingPhrases)
-                {
-                    Console.WriteLine(missingPhrase.Key);
-                }
             }
-
-            Console.WriteLine("Message End !");
-            Console.ReadKey();
+            
+                Console.WriteLine("Message End !");
+                Console.ReadKey();
+            
         }
 
         
