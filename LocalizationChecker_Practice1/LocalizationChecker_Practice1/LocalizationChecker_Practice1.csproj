@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Checker.cs" />
     <Compile Include="File.cs" />
+    <Compile Include="FileReader.cs" />
     <Compile Include="ParentResult.cs" />
     <Compile Include="Phrase.cs" />
     <Compile Include="Program.cs" />

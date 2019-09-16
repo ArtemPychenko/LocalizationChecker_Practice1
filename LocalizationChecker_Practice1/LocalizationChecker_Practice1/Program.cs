@@ -10,90 +10,48 @@ namespace LocalizationChecker_Practice1
     class Program
     {
         static string englishFile = @"C:\Users\Afidah\Desktop\keys.xml";
-        static string denmarkFile = @"C:\Users\Afidah\Desktop\denmark.xml";
+        static string denmarkFile = @"C:\Users\Afidah\Desktop\keys-denmark.xml";
 
-        public static File  ReadXMLFile(string fileName)
-        {
-            // read from XML file
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(fileName);
-
-            File file = new File();
-
-            // put it in collection using list
-            foreach (XmlNode firstnode in xmlDocument.ChildNodes)
-            {
-                if (firstnode.Name == "sitecore")
-                {
-                    foreach (XmlNode childNode in firstnode.ChildNodes)
-                    {
-                        if (childNode.Name == "phrase")
-                        {
-                            var key = childNode.Attributes["key"]?.Value;
-                            var itemId = childNode.Attributes["itemid"]?.Value;
-                            var path = childNode.Attributes["path"]?.Value;
-                            var fieldName = childNode.Attributes["fieldName"]?.Value;
-                            var template = childNode.Attributes["template"]?.Value;
-                            var valueNode = childNode.Attributes[0];
-                            var translatedValue = valueNode.InnerText;
-
-                            Phrase phrase = new Phrase()
-                            {
-                                Key = key,
-                                ItemId = itemId,
-                                Path = path,
-                                FieldName = fieldName,
-                                Template = template,
-                                TranslatedValue = translatedValue
-                            };
-
-                            file.Phrases.Add(phrase);
-                        }
-                    }
-                }
-            }
-            return file;
-        }
-        
 
         static void Main(string[] args)
         {
-            File EnglishFile = ReadXMLFile(englishFile);
-            File DenmarkFile = ReadXMLFile(denmarkFile);
+            FileReader reader = new FileReader();
+            File EnglishFile = reader.ReadXMLFile(englishFile);
+            File DenmarkFile = reader.ReadXMLFile(denmarkFile);
             var selectedPath = "/sitecore/client/Applications/MarketingAutomation";
 
-            // Filter data based on selected Path
-            var englishContext = EnglishFile.Phrases.Where(x => x.Path != null && x.Path.StartsWith(selectedPath));
-            var denmarkContext = DenmarkFile.Phrases.Where(x => x.Path != null && x.Path.StartsWith(selectedPath));
+            Checker checker = new Checker();
+            var result = checker.Check(EnglishFile, new File[] { DenmarkFile }, selectedPath);
 
-            // Missing Phrase
-            var missingDenmarkPhrase = englishContext.Where(x => !denmarkContext.Any(y => y.Key == x.Key));
-
-            // Not Translated Phrase
-            var untranslatedDenmarkPhrase = englishContext.Where(x => denmarkContext.Any(y => y.Key == x.Key && y.TranslatedValue == x.TranslatedValue));
-
-            // Display denmark
-            Result denmarkResult = new Result("DenmarkFile", DenmarkFile.Phrases.Count(), missingDenmarkPhrase, untranslatedDenmarkPhrase);
-
-            List<Result> languageResults = new List<Result>();
-            languageResults.Add(denmarkResult);
-
-            foreach( var language in languageResults)
+            //// Display result
+            foreach (var language in result.LanguageResults)
             {
-                Console.WriteLine(language.FileName);
-                Console.WriteLine(language.TotalPhraseCount);
+                Console.WriteLine("---------------------------------------------------------------");
+                Console.WriteLine("The file name is: " + language.FileName);
+                Console.WriteLine("Total phrases: " + language.TotalPhraseCount);
+                Console.WriteLine("Total filtered phrases: " + language.FilteredPhraseCount);
 
-                foreach(var lan in language)
+                Console.WriteLine();
+                Console.WriteLine("Untranslated phrases: " + language.UntranslatedPhrases.Count());
+                int untranslatedPhraseIndex = 0;
+                foreach (var untranslatedPhrase in language.UntranslatedPhrases)
                 {
-
+                    Console.WriteLine($"  [{untranslatedPhraseIndex}] Value={untranslatedPhrase.TranslatedValue} Key={untranslatedPhrase.Key}");
+                    untranslatedPhraseIndex++;
                 }
-                Console.WriteLine(language.MissingPhrases);
+
+                Console.WriteLine();
+                Console.WriteLine("Missing phrases: " + language.MissingPhrases.Count());
+                foreach (var missingPhrase in language.MissingPhrases)
+                {
+                    Console.WriteLine(missingPhrase.Key);
+                }
             }
 
-            //ParentResult parentResult = new ParentResult( selectedPath, EnglishFile.Phrases.Count,DenmarkFile.Phrases.Count,languageResults);            
-            
-
+            Console.WriteLine("Message End !");
             Console.ReadKey();
         }
+
+        
     }
 }

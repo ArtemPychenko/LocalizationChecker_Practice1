@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitecore>
+  <phrase key="key1" itemid="itemId1" fieldid="fieldId1" path="/sitecore/client/Applications/MarketingAutomation/Translations/Test1" fieldname="Phrase" template="template1">
+    <en-US>Test1</en-US>
+  </phrase>
+  <phrase key="key2" itemid="itemId2" fieldid="fieldId2" path="/sitecore/client/Applications/MarketingAutomation/Translations/Test2" fieldname="Phrase" template="template2">
+    <en-US>Test2</en-US>
+  </phrase>
+  <phrase key="key3" itemid="itemId3" fieldid="fieldId3" path="/sitecore/client/Applications/MarketingAutomation/Translations/Test3" fieldname="Phrase" template="template3">
+    <en-US>Test3</en-US>
+  </phrase>
+</sitecore>
