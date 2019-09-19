@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocalizationChecker_Practice1
+namespace LocalizationChecker
 {
     public interface IReportGenerator
     {

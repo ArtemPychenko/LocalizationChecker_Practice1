@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LocalizationChecker_Practice1
+namespace LocalizationChecker
 {
     public class Checker
     {

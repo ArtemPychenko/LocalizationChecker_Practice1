@@ -62,7 +62,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LocalizationChecker_Practice1\LocalizationChecker_Practice1.csproj">
+    <ProjectReference Include="..\LocalizationChecker\LocalizationChecker.csproj">
       <Project>{732c50c8-b296-49bc-87dc-852634c05086}</Project>
       <Name>LocalizationChecker_Practice1</Name>
     </ProjectReference>

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{732C50C8-B296-49BC-87DC-852634C05086}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LocalizationChecker_Practice1</RootNamespace>
-    <AssemblyName>LocalizationChecker_Practice1</AssemblyName>
+    <RootNamespace>LocalizationChecker</RootNamespace>
+    <AssemblyName>LocalizationChecker</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LocalizationChecker.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommandLine, Version=2.6.0.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">

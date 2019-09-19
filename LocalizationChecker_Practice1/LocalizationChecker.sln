@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationChecker_Practice1", "LocalizationChecker_Practice1\LocalizationChecker_Practice1.csproj", "{732C50C8-B296-49BC-87DC-852634C05086}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationChecker_Practice1", "LocalizationChecker\LocalizationChecker.csproj", "{732C50C8-B296-49BC-87DC-852634C05086}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationChecker_UnitTests", "LocalizationChecker_UnitTests\LocalizationChecker_UnitTests.csproj", "{078793BD-EF23-4B28-A5EF-46E363D93D67}"
 EndProject

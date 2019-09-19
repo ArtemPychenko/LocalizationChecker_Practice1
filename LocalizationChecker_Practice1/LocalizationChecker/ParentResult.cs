@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocalizationChecker_Practice1
+namespace LocalizationChecker
 {
     public class ParentResult
     {

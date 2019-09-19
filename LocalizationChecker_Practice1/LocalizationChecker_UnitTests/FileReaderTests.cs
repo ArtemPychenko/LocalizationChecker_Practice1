@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using LocalizationChecker_Practice1;
+using LocalizationChecker;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LocalizationChecker_UnitTests

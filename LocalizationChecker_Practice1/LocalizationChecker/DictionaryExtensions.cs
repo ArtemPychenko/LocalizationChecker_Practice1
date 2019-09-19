@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LocalizationChecker_Practice1
+namespace LocalizationChecker
 {
     public static class DictionaryExtensions
     {

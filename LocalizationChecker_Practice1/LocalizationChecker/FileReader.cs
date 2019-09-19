@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace LocalizationChecker_Practice1
+namespace LocalizationChecker
 {
     public class FileReader
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using LocalizationChecker_Practice1;
+using LocalizationChecker;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 

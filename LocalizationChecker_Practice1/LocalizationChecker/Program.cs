@@ -1,10 +1,11 @@
 ﻿using CommandLine;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace LocalizationChecker_Practice1
+namespace LocalizationChecker
 {
     public class Options
     {
@@ -42,6 +43,7 @@ namespace LocalizationChecker_Practice1
             parser.ParseArguments<Options>(args)
                 .WithParsed<Options>(o =>
                 {
+                   
                     Console.WriteLine($"Languages = {string.Join(",", o.LanguageFiles)}, ");
                     Console.WriteLine($"Master Language = {o.MasterFile}");
                     Console.WriteLine($"Path filter = {o.PathFilter} ");
@@ -52,7 +54,9 @@ namespace LocalizationChecker_Practice1
                     if (!System.IO.File.Exists(o.MasterFile))
                     {
                         // Ooops, master file does not exist!
+                        Console.ReadKey();
                         Console.Error.WriteLine($"ERROR: Master file '{o.MasterFile}' does not exist");
+                       
                         return;
                     }
 
@@ -96,6 +100,11 @@ namespace LocalizationChecker_Practice1
 
                     Console.WriteLine("Message End !");
                 });
+
+            if (Debugger.IsAttached)
+            {
+                Console.ReadKey();
+            }
         }
     }
 }
