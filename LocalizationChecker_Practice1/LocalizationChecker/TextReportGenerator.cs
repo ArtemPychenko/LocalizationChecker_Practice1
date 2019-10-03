@@ -23,6 +23,7 @@ namespace LocalizationChecker
             writer.WriteLine($"Master File: {result.FileName}");
             writer.WriteLine($"Report Generated: {DateTime.UtcNow:o}");
             writer.WriteLine($"Total phrases: {result.TotalPhraseCount}");
+            writer.WriteLine($"Total filtered phrases: " + result.TotalFilteredPhraseCount);
             writer.WriteLine($"Path filter: {result.PathFilter}");
             writer.WriteLine($"{result.LanguageResults.Count()} language files analyzed:");
             foreach (var language in result.LanguageResults)
@@ -33,7 +34,7 @@ namespace LocalizationChecker
             // Language 1 results
             foreach (var language in result.LanguageResults)
             {
-                writer.WriteLine("---------------------------------------------------------------");
+                writer.WriteLine("----------------------------------------------------------------------------------------------------------------------------");
                 writer.WriteLine("The file name is: " + language.FileName);
                 writer.WriteLine("Total phrases: " + language.TotalPhraseCount);
                 writer.WriteLine("Total filtered phrases: " + language.FilteredPhraseCount);
