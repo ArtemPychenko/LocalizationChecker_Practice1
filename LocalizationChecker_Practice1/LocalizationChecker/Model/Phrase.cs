@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LocalizationChecker
+﻿
+namespace LocalizationChecker.Model
 {
+    /// <summary>
+    /// Container to keep required nodes of xml file.
+    /// </summary>
     public class Phrase
     {
         public int? LineNumber { get; set; }

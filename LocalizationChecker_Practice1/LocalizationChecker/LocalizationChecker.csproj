@@ -64,17 +64,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Checker.cs" />
     <Compile Include="DictionaryExtensions.cs" />
-    <Compile Include="File.cs" />
-    <Compile Include="FileReader.cs" />
-    <Compile Include="IReportGenerator.cs" />
-    <Compile Include="ParentResult.cs" />
-    <Compile Include="Phrase.cs" />
+    <Compile Include="Filtering\Checker.cs" />
+    <Compile Include="Model\File.cs" />
+    <Compile Include="Model\ParentResult.cs" />
+    <Compile Include="Model\Phrase.cs" />
+    <Compile Include="Model\Result.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="TextReportGenerator.cs" />
+    <Compile Include="Reading\FileReader.cs" />
+    <Compile Include="Reporting\IReportGenerator.cs" />
+    <Compile Include="Reporting\TextReportGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

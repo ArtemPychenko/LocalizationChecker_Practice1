@@ -6,8 +6,7 @@ namespace LocalizationChecker
     {
         public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
         {
-            TValue value;
-            return dictionary.TryGetValue(key, out value) ? value : default(TValue);
+            return dictionary.TryGetValue(key, out var value) ? value : default(TValue);
         }
     }
 }

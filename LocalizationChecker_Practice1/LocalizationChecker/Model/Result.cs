@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using LocalizationChecker.Reading;
 
-namespace LocalizationChecker
+namespace LocalizationChecker.Model
 {
-   
     public class Result
     {
         public Result(string fileName, int totalPhraseCount, int filteredPhraseCount, IEnumerable<Phrase> untranslatedPhrases, IEnumerable<Phrase> missingPhrases)
         {
-            this.FileName = fileName;
-            this.TotalPhraseCount = totalPhraseCount;
-            this.FilteredPhraseCount = filteredPhraseCount;
-            this.UntranslatedPhrases = untranslatedPhrases;
-            this.MissingPhrases = missingPhrases;
+            FileName = fileName;
+            TotalPhraseCount = totalPhraseCount;
+            FilteredPhraseCount = filteredPhraseCount;
+            UntranslatedPhrases = untranslatedPhrases;
+            MissingPhrases = missingPhrases;
         }
 
         public string FileName { get; set; }

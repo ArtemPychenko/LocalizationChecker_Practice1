@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LocalizationChecker;
+using LocalizationChecker.Filtering;
+using LocalizationChecker.Model;
+using LocalizationChecker.Reading;
 
 namespace LocalizationChecker_UnitTests
 {
@@ -46,8 +49,8 @@ namespace LocalizationChecker_UnitTests
         public void MasterFileSameContentAsLanguageFile_NoPhrases()
         {
             FileReader reader = new FileReader();
-            var masterFile = reader.ReadXMLFile(@"TestFiles\NoPhrases.xml");
-            var languageFile = reader.ReadXMLFile(@"TestFiles\NoPhrases.xml");
+            var masterFile = reader.ReadAndFilterXmlFile(@"TestFiles\NoPhrases.xml");
+            var languageFile = reader.ReadAndFilterXmlFile(@"TestFiles\NoPhrases.xml");
             File[] languageFiles = new File[]
             {
                 languageFile
@@ -73,8 +76,8 @@ namespace LocalizationChecker_UnitTests
         public void MasterFileSinglePhrase_PathFilterMatches()
         {
             FileReader reader = new FileReader();
-            var masterFile = reader.ReadXMLFile(@"TestFiles\SinglePhrase.xml");
-            var languageFile = reader.ReadXMLFile(@"TestFiles\NoPhrases.xml");
+            var masterFile = reader.ReadAndFilterXmlFile(@"TestFiles\SinglePhrase.xml");
+            var languageFile = reader.ReadAndFilterXmlFile(@"TestFiles\NoPhrases.xml");
             File[] languageFiles = new File[]
             {
                 languageFile
@@ -101,8 +104,8 @@ namespace LocalizationChecker_UnitTests
         public void MasterFileSinglePhrase_PathFilterDoesNotMatch()
         {
             FileReader reader = new FileReader();
-            var masterFile = reader.ReadXMLFile(@"TestFiles\SinglePhrase.xml");
-            var languageFile = reader.ReadXMLFile(@"TestFiles\NoPhrases.xml");
+            var masterFile = reader.ReadAndFilterXmlFile(@"TestFiles\SinglePhrase.xml");
+            var languageFile = reader.ReadAndFilterXmlFile(@"TestFiles\NoPhrases.xml");
             File[] languageFiles = new File[]
             {
                 languageFile
@@ -128,8 +131,8 @@ namespace LocalizationChecker_UnitTests
         public void MasterFileTwoPhrases_LanguageFileSinglePhrase()
         {
             FileReader reader = new FileReader();
-            var masterFile = reader.ReadXMLFile(@"TestFiles\TwoPhrases.xml");
-            var languageFile = reader.ReadXMLFile(@"TestFiles\SinglePhrase.xml");
+            var masterFile = reader.ReadAndFilterXmlFile(@"TestFiles\TwoPhrases.xml");
+            var languageFile = reader.ReadAndFilterXmlFile(@"TestFiles\SinglePhrase.xml");
             File[] languageFiles = new File[]
             {
                 languageFile
@@ -156,9 +159,9 @@ namespace LocalizationChecker_UnitTests
         public void MasterFileTwoPhrases_LanguageFilesSinglePhrase()
         {
             FileReader reader = new FileReader();
-            var masterFile = reader.ReadXMLFile(@"TestFiles\ThreePhrases.xml");
-            var languageFile1 = reader.ReadXMLFile(@"TestFiles\TwoPhrases.xml");
-            var languageFile2 = reader.ReadXMLFile(@"TestFiles\SinglePhrase.xml");
+            var masterFile = reader.ReadAndFilterXmlFile(@"TestFiles\ThreePhrases.xml");
+            var languageFile1 = reader.ReadAndFilterXmlFile(@"TestFiles\TwoPhrases.xml");
+            var languageFile2 = reader.ReadAndFilterXmlFile(@"TestFiles\SinglePhrase.xml");
             File[] languageFiles = new File[]
             {
                 languageFile1, languageFile2

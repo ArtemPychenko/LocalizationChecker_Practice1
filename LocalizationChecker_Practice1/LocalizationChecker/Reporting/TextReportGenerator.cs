@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LocalizationChecker.Model;
 
-namespace LocalizationChecker
+namespace LocalizationChecker.Reporting
 {
+    /// <inheritdoc />
     public class TextReportGenerator : IReportGenerator
     {
+        /// <inheritdoc />
         public Stream Generate(ParentResult result)
         {
             if (result == null)
@@ -42,6 +42,7 @@ namespace LocalizationChecker
                 writer.WriteLine();
                 writer.WriteLine("Untranslated phrases: " + language.UntranslatedPhrases.Count());
                 int untranslatedPhraseIndex = 0;
+
                 foreach (var untranslatedPhrase in language.UntranslatedPhrases)
                 {
                     writer.WriteLine($"  [{untranslatedPhraseIndex}] Line={untranslatedPhrase.LineNumber} Value={untranslatedPhrase.TranslatedValue} Key={untranslatedPhrase.Key}");
@@ -58,9 +59,7 @@ namespace LocalizationChecker
                 }
             }
 
-
             // TODO: Write out data from ParentResult
-
             writer.Flush();
             stream.Position = 0;
             return stream;
